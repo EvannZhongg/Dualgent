@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Dualgent verification lab</title>
+<style>body{font:16px/1.7 "Segoe UI",sans-serif;max-width:620px;margin:60px auto;color:#23354c}label{display:block;margin:18px 0}input,select{display:block;padding:9px;width:320px}button{padding:10px 20px;background:#2366bc;color:white;border:0;border-radius:5px;margin-right:12px}#preview{padding:20px;background:#eaf2fc;margin:20px 0}</style>
+<h1>Project request</h1><p>A local fixture. No external account or service is used.</p>
+<form id="form"><label>Project name<input id="project" name="project" required></label>
+<label>Owner<input id="owner" name="owner" required></label>
+<label>Priority<select id="priority"><option>Normal</option><option>High</option></select></label>
+<button type="submit">Preview request</button></form>
+<section id="preview" hidden><h2>Review request</h2><p id="summary"></p><button id="save">Confirm save</button><button id="edit">Edit</button></section>
+<p id="status" role="status"></p>
+<script>
+const form=document.querySelector('#form'),preview=document.querySelector('#preview'),status=document.querySelector('#status');
+form.addEventListener('submit',e=>{e.preventDefault();document.querySelector('#summary').textContent=`Project: ${form.project.value}; Owner: ${form.owner.value}; Priority: ${document.querySelector('#priority').value}`;preview.hidden=false;form.hidden=true});
+document.querySelector('#save').onclick=()=>{const record={project:form.project.value,owner:form.owner.value,priority:document.querySelector('#priority').value};localStorage.setItem('dualgent-fixture',JSON.stringify(record));preview.hidden=true;status.textContent=`Saved project ${record.project} for ${record.owner}. Receipt: DG-4827`};
+document.querySelector('#edit').onclick=()=>{preview.hidden=true;form.hidden=false};
+</script></html>

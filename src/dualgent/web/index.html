@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dualgent</title>
+    <link rel="stylesheet" href="/assets/app.css" />
+  </head>
+  <body>
+    <div class="workspace">
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="Dualgent 首页"
+          ><span class="brandmark" aria-hidden="true">d</span>Dualgent</a
+        >
+        <button id="new-task" class="new-task">＋ 新任务</button>
+        <h2 class="section-label">最近任务</h2>
+        <nav id="tasks" aria-label="最近任务"></nav>
+        <div class="sidebar-footer">
+          <span class="connection-dot" id="connection-dot"></span
+          ><span id="connection-label">连接中</span>
+          <button id="pair" class="quiet">连接浏览器</button>
+        </div>
+      </aside>
+      <main>
+        <header class="topbar">
+          <div>
+            <span id="task-title">交互工作台</span
+            ><span id="task-state" class="state"></span>
+          </div>
+          <div>
+            <button id="new-task-mobile" class="quiet">新任务</button
+            ><button id="cancel" class="quiet" hidden>停止任务</button>
+          </div>
+        </header>
+        <div id="error" class="error" role="alert" hidden></div>
+        <section id="conversation" aria-label="任务对话" aria-live="polite">
+          <div id="welcome">
+            <div class="orbit" aria-hidden="true">
+              <span>Web</span><i></i><span>桌面</span>
+            </div>
+            <h1>让想法在界面中发生。</h1>
+            <p>
+              选择标签页或桌面窗口，告诉 Dualgent 你想完成什么。<br />每一步操作，都带着可检查的结果。
+            </p>
+            <button id="example" class="example">
+              试试看：填写表单，并确认保存结果
+            </button>
+          </div>
+          <div id="timeline"></div>
+        </section>
+        <div class="composer-area">
+          <div id="attention" role="status" hidden></div>
+          <form id="composer">
+            <label class="sr-only" for="prompt">任务或补充说明</label>
+            <textarea
+              id="prompt"
+              rows="3"
+              placeholder="描述任务，以及你希望看到的最终结果…"
+              required
+              maxlength="8000"
+            ></textarea>
+            <div class="composer-bottom">
+              <span id="scope-label">先在右侧选择操作环境</span
+              ><button id="send" type="submit">
+                开始任务 <span aria-hidden="true">↵</span>
+              </button>
+            </div>
+          </form>
+          <p class="composer-note">
+            仅在选定环境中执行。你可以随时停止，并查看每一步的验证结果。
+          </p>
+        </div>
+      </main>
+      <aside class="environments">
+        <header>
+          <h2>操作环境</h2>
+          <button id="refresh" class="quiet">刷新</button>
+        </header>
+        <p class="scope-hint">选择本次任务可以操作的环境，最多 4 个。</p>
+        <div id="surfaces"><p class="muted">正在发现环境…</p></div>
+        <div id="environment-errors" class="muted"></div>
+        <section class="evidence">
+          <h2>当前观察</h2>
+          <p id="observed-surface" class="muted">
+            执行后显示环境中的实际内容。
+          </p>
+          <pre id="observation"></pre>
+        </section>
+      </aside>
+    </div>
+    <dialog id="auth-dialog">
+      <form id="auth-form">
+        <h2>连接本机 Dualgent</h2>
+        <p>输入本机连接码，或使用 <code>dualgent --open</code> 打开。</p>
+        <label for="auth-token">本机连接码</label
+        ><input id="auth-token" type="password" required autocomplete="off" />
+        <p id="auth-error" role="alert"></p>
+        <button>连接</button>
+      </form>
+    </dialog>
+    <dialog id="pair-dialog">
+      <h2>连接浏览器</h2>
+      <p>
+        在 Chrome 或 Edge 的扩展管理页开启开发者模式，<br />选择「加载已解压的扩展程序」，加载此目录：
+      </p>
+      <code id="extension-path"></code>
+      <p>打开 Dualgent 扩展的设置，将下方连接码粘贴进去并保存。</p>
+      <button id="copy-code">复制连接码</button
+      ><span id="copy-status" role="status"></span>
+      <p id="pair-port"></p>
+      <button id="close-pair" class="quiet">完成</button>
+    </dialog>
+    <script src="/assets/app.js" type="module"></script>
+  </body>
+</html>

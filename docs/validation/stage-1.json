@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-01",
+  "model": "deepseek-flash",
+  "python": "3.12.4",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "chromium": "156.0.8078.4",
+  "assertions": {
+    "web_saved_exact_record": true,
+    "web_task_verified": true,
+    "cross_surface_exact_record": true,
+    "cross_surface_task_verified": true
+  },
+  "tasks": [
+    {
+      "goal": "在 Project request 页面将 Project name 填为 Dualgent，Owner 填为 Ada，保持 Priority 为 Normal，预览后确认保存，验证最终页面的保存结果和回执。这是本地可丢弃测试页面，我明确授权提交其中的测试表单。",
+      "state": "succeeded",
+      "actions": [
+        "fill",
+        "fill",
+        "click",
+        "click"
+      ],
+      "decisions": 5,
+      "verification_rounds": 5,
+      "verified_rounds": 4,
+      "total_tokens": 15515,
+      "final_checks": [
+        {
+          "kind": "text",
+          "expected": "Saved project Dualgent for Ada. Receipt: DG-4827",
+          "value": null,
+          "passed": true
+        },
+        {
+          "kind": "text",
+          "expected": "Receipt: DG-4827",
+          "value": null,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "goal": "先读取 Project request 网页已经保存的项目、Owner 和 Receipt 回执，再把它们分别填入桌面 Dualgent desktop verification lab 窗口的 Project name、Owner、Web receipt。点击 Preview record，核对预览后点击 Confirm save，并验证桌面保存结果以及网页回执仍存在。这是两个本地可丢弃测试环境，我明确授权保存测试记录。不要猜测回执，请以网页内容为准。",
+      "state": "succeeded",
+      "actions": [
+        "fill",
+        "fill",
+        "fill",
+        "click",
+        "click"
+      ],
+      "decisions": 6,
+      "verification_rounds": 6,
+      "verified_rounds": 6,
+      "total_tokens": 23057,
+      "final_checks": [
+        {
+          "kind": "text",
+          "expected": "Saved record: Dualgent | Ada | DG-4827",
+          "value": null,
+          "passed": true
+        },
+        {
+          "kind": "element",
+          "expected": "Web receipt",
+          "value": "DG-4827",
+          "passed": true
+        },
+        {
+          "kind": "text",
+          "expected": "Receipt: DG-4827",
+          "value": null,
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

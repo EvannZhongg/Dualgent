@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Dualgent",
+  "version": "0.1.0",
+  "description": "Connect selected browser tabs to your local Dualgent interaction agent.",
+  "minimum_chrome_version": "125",
+  "permissions": ["debugger", "tabs", "storage", "alarms"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_popup": "options.html", "default_title": "Dualgent" },
+  "options_page": "options.html",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src ws://127.0.0.1:*"
+  }
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+  <meta charset="utf-8" /><title>Dualgent 配对</title>
+  <link rel="stylesheet" href="options.css" />
+  <main>
+    <h1>Dualgent</h1>
+    <p>连接本机，操作你选定的标签页。</p>
+    <form>
+      <label
+        >连接码<input id="token" type="password" required autocomplete="off"
+      /></label>
+      <label
+        >端口<input
+          id="port"
+          type="number"
+          value="8765"
+          min="1024"
+          max="65535"
+          required
+      /></label>
+      <label>浏览器名称<input id="name" placeholder="Chrome · 个人" /></label>
+      <button>保存并连接</button>
+    </form>
+    <p id="status" role="status"></p>
+    <p class="hint">
+      在 Dualgent
+      工作台「连接浏览器」中获取连接码。任务只接管选中的标签页；页面跨站跳转后会停止操作。
+    </p>
+  </main>
+  <script src="options.js" type="module"></script>
+</html>

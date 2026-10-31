@@ -1,0 +1,17 @@
+.env
+.venv/
+.dualgent/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.pytest-tmp/
+.ruff_cache/
+build/
+dist/
+node_modules/
+BrowserAttach/
+Nosis/
+Windows-MCP/
+playwright-report/
+test-results/
